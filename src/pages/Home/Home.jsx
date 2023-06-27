@@ -4,24 +4,21 @@ import { Container } from '../../layouts'
 
 import threadsStore from 'store/threadsStore'
 
-import fetchData from 'utils/fetch'
+import fetchReddit from 'utils/fetchReddit'
 
 const store = new threadsStore()
-console.log(store)
+// console.log(store)
 
-const handleFetchData = () => {
-  console.log('start')
-  fetchData()
+const HomePage = () => {
+  fetchReddit
+    .get()
     .then((res) => console.log(res))
     .catch((err) => console.log(err))
     .finally(() => console.log('done'))
-}
 
-const HomePage = () => {
   return (
     <Container>
       <h1 className='ui-title-1'>Home Page</h1>
-      <button onClick={handleFetchData}>fetch</button>
     </Container>
   )
 }
